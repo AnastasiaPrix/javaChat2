@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
@@ -23,7 +24,7 @@ public class Server {
     private List<ClientHandler> clients;
     private AuthService authService;
 
-    public Server() {
+    public Server() throws SQLException {
         clients = new CopyOnWriteArrayList<>();
         authService = new SimpleAuthServise();
 
