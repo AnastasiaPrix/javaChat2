@@ -10,8 +10,16 @@ public class SimpleAuthServise implements AuthService {
     private List<UserData> users;
 
     public SimpleAuthServise() throws SQLException {
+//        ConnectionService.Connection();
+//        users = ConnectionService.selectExistUsers();
+        users = new ArrayList<>();
+        users.add(new UserData("qwe", "qwe", "qwe"));
+        users.add(new UserData("asd", "asd", "asd"));
+        users.add(new UserData("zxc", "zxc", "zxc"));
 
-        users = ConnectionService.selectExistUsers();
+        for (int i = 1; i < 10; i++) {
+            users.add(new UserData("login" + i, "pass" + i, "nick" + i));
+        }
 
     }
 

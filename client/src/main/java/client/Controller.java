@@ -20,6 +20,7 @@ import javafx.stage.StageStyle;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
@@ -107,6 +108,7 @@ public class Controller implements Initializable {
                                 String[] token = str.split("\\s");
                                 nickname = token[1];
                                 setAuthenticated(true);
+                                IOClass.readLastHundred(nickname,textArea);
                                 break;
                             }
 
@@ -119,6 +121,7 @@ public class Controller implements Initializable {
                             }
                         } else {
                             textArea.appendText(str + "\n");
+                            IOClass.writeWithBufferedWriter(str,this.nickname);
                         }
                     }
                     //цикл работы
@@ -142,6 +145,8 @@ public class Controller implements Initializable {
 
                         } else {
                             textArea.appendText(str + "\n");
+                            IOClass.writeWithBufferedWriter(str,this.nickname);
+
                         }
                     }
                 } catch (RuntimeException e) {
